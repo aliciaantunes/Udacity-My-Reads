@@ -1,10 +1,10 @@
 import { useState } from "react";
-import PropTypes from 'prop-types';
 
 
-
-
-
+function BookSearch({myBooks, changeBooksShelf}) {
+    const [books, setBooks] = useState([]);
+    const [searchParameter, setSearchParameter] = useState('');
+}
 
 
 return (
