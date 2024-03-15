@@ -1,4 +1,12 @@
+import React from "react";
+import { PropTypes } from "react";
 
+function Book ({book, onChangeSelf}) {
+    const ChangeSelf = (e) => {
+        const shelf = e.target.value;
+        onChangeSelf(book, shelf);
+    }
+  
   return (
     <li>
       <div className="book">
@@ -31,3 +39,9 @@
           </div>
         </li>
     );
+    }
+
+    Book.propTypes = {
+        book: PropTypes.objectOf(PropTypes.any).isRequired,
+        onChangeShelf: PropTypes.func.isRequired,
+    };
