@@ -1,10 +1,10 @@
 import React from "react";
-import { PropTypes } from "react";
+import { PropTypes } from "prop-types";
 
-function Book ({book, onChangeSelf}) {
-    const ChangeSelf = (e) => {
+function Book ({book, onChangeShelf}) {
+    const ChangeShelf = (e) => {
         const shelf = e.target.value;
-        onChangeSelf(book, shelf);
+        onChangeShelf(book, shelf);
     }
   
   return (
@@ -21,7 +21,7 @@ function Book ({book, onChangeSelf}) {
             }}
              ></div>
             <div className="book-shelf-changer">
-              <select onChange={ChangeSelf} value={book.shelf || 'none'}>
+              <select onChange={ChangeShelf} value={book.shelf || 'none'}>
                  <option value="none" disabled>Move to...</option>
                  <option value="currentlyReading">Currently Reading</option>
                  <option value="wantToRead">Want to Read</option>
@@ -45,3 +45,5 @@ function Book ({book, onChangeSelf}) {
         book: PropTypes.objectOf(PropTypes.any).isRequired,
         onChangeShelf: PropTypes.func.isRequired,
     };
+
+    export default Book;
