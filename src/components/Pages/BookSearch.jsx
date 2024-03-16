@@ -1,6 +1,7 @@
-import { useState } from "react";
+import React, {useState, useEffect} from 'react';
 import { debounce } from 'throttle-debounce';
 import * as BooksAPI from '../../utils/BooksAPI';
+
 
 function BookSearch({myBooks, changeBooksShelf}) {
     const [books, setBooks] = useState([]);
@@ -21,8 +22,24 @@ function BookSearch({myBooks, changeBooksShelf}) {
        }
     });
 
+    const onSearchInputChange = (e) => {
+      const searchParameter = e.target.value;
+      setSearchParameter(searchParameter);
+      searchBooks(searchParameter);
+    }
 
 
+   return (
+    <div className='search-books'>
+      <div className='search-books-bar'>
+        <div className='search-books-input-wrapper'>
+          <input type='text' placeholder='Search by title or author' value={searchParameter} onChange={onSearchInputChange}/>
+        </div>
+      </div>
+      <div className='search-books-results'>
+      </div>
+    </div>
+   )
 
 
 
