@@ -1,5 +1,7 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import Book from './Book';
+
 
 function Bookshelf({books, title, changeBookShelf}) {
 
@@ -19,12 +21,16 @@ return (
       );
     }
 
-
-
-
-
-
-
+    Bookshelf.propTypes = {
+        books: PropTypes.arrayOf(PropTypes.any),
+        title: PropTypes.string,
+        changeBookShelf: PropTypes.func.isRequired,
+      };
+    
+      Bookshelf.defaultProps = {
+        books: [],
+        title: '',
+      };
 
 
 
