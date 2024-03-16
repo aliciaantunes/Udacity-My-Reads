@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { debounce } from 'throttle-debounce';
 import * as BooksAPI from '../../utils/BooksAPI';
-
+import Book from '..\common\Book'
 
 function BookSearch({myBooks, changeBooksShelf}) {
     const [books, setBooks] = useState([]);
@@ -26,6 +26,27 @@ function BookSearch({myBooks, changeBooksShelf}) {
       const searchParameter = e.target.value;
       setSearchParameter(searchParameter);
       searchBooks(searchParameter);
+    };
+
+    useEffect(() => {
+      return () => {
+      };
+    }, []);
+
+    const renderBooks = () => {
+      return books && books.map((unshelfed) => {
+        const book = { ...unshelfed};
+
+        myBooks.forEach((myBook) => {
+          if (book.id === myBook.id) {
+            book.shelf = myBook.shelf;
+          }
+        });
+
+        return (
+          <book key={book.id} book={book} onChangeShelf={changeBooksShelf} />
+        );
+      });
     }
 
 
@@ -37,6 +58,9 @@ function BookSearch({myBooks, changeBooksShelf}) {
         </div>
       </div>
       <div className='search-books-results'>
+        <ol className='books-grid'>
+        {renderBooks()}
+        </ol>
       </div>
     </div>
    )
