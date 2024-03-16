@@ -1,5 +1,6 @@
 import React from 'react';
 import Bookshelf from '../common/BookShelf';
+import PropTypes from 'prop-types';
 
 
 function BookList({myBooks, changeBookShelf}){
@@ -17,12 +18,18 @@ function BookList({myBooks, changeBookShelf}){
             <Bookshelf books={filterBooks('currentlyReading')} title= "Currently Reading" changeBookShelf={changeBookShelf} />
             <Bookshelf books={filterBooks('wantToRead')} title="Want to Read" changeBookShelf={changeBookShelf} />
             <Bookshelf books={filterBooks('read')} title="Read" changeBookShelf={changeBookShelf} />
-            <div>
-      </div>
       </div>
       </div>               
-     )
+     );
+   }
 
-};
+   BookList.propTypes = {
+      myBooks: PropTypes.arrayOf(PropTypes.any),
+      changeBookShelf: PropTypes.func.isRequired,
+   }
+
+   BookList.defaultProps = {
+      myBooks: [],
+   }
 
 export default BookList;
