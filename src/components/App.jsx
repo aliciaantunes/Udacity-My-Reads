@@ -4,6 +4,7 @@ import * as BooksAPI from '../BooksAPI';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import BookList from './Pages/BookList';
+import BookSearch from './Pages/BookSearch';
 
 import "./App.css";
 
@@ -34,7 +35,8 @@ return (
     <div className="app">
       <div>
         <Routes>
-          <Route path="/" element={<BookList myBooks={myBooks} changeBookShelf={changeBookShelf} />} />
+          <Route exact path="/" element={<BookList myBooks={myBooks} changeBookShelf={changeBookShelf} />}/>
+          <Route path='/search' render={() => <BookSearch myBooks={myBooks} changeBooksShelf={changeBookShelf} />} />
         </Routes>
       </div>
     </div>
