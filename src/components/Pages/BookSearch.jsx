@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import { debounce } from 'throttle-debounce';
 import * as BooksAPI from '../../utils/BooksAPI';
-import Book from '..\common\Book'
+import Book from '../common/Book'
+import PropTypes from 'prop-types';
 
 function BookSearch({myBooks, changeBooksShelf}) {
     const [books, setBooks] = useState([]);
@@ -44,7 +45,10 @@ function BookSearch({myBooks, changeBooksShelf}) {
         });
 
         return (
-          <book key={book.id} book={book} onChangeShelf={changeBooksShelf} />
+          <Book 
+          key={book.id} 
+          book={book} 
+          onChangeShelf={changeBooksShelf} />
         );
       });
     }
@@ -54,7 +58,11 @@ function BookSearch({myBooks, changeBooksShelf}) {
     <div className='search-books'>
       <div className='search-books-bar'>
         <div className='search-books-input-wrapper'>
-          <input type='text' placeholder='Search by title or author' value={searchParameter} onChange={onSearchInputChange}/>
+          <input 
+            type='text' 
+            placeholder='Search by title or author' 
+            value={searchParameter} 
+            onChange={onSearchInputChange}/>
         </div>
       </div>
       <div className='search-books-results'>
@@ -63,11 +71,16 @@ function BookSearch({myBooks, changeBooksShelf}) {
         </ol>
       </div>
     </div>
-   )
+   );
+}
 
+BookSearch.propTypes = {
+  myBook: PropTypes.arrayOf(PropTypes.any),
+  changeBooksShelf: PropTypes.func.isRequired,
+}
 
-
-
+BookSearch.defaultProps = {
+  myBooks: [],
 }
 
 export default BookSearch;
