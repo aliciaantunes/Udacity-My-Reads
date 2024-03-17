@@ -5,7 +5,7 @@ import * as BooksAPI from '../../BooksAPI';
 import Book from '../common/Book'
 import PropTypes from 'prop-types';
 
-function BookSearch({myBooks, changeBooksShelf}) {
+function BookSearch({myBooks, changeBookShelf}) {
     const [books, setBooks] = useState([]);
     const [searchParameter, setSearchParameter] = useState('');
 
@@ -49,7 +49,7 @@ function BookSearch({myBooks, changeBooksShelf}) {
           <Book 
           key={book.id} 
           book={book} 
-          onChangeShelf={changeBooksShelf} />
+          onChangeShelf={changeBookShelf} />
         );
       });
     }
@@ -79,7 +79,7 @@ function BookSearch({myBooks, changeBooksShelf}) {
 }
 
 BookSearch.propTypes = {
-  myBook: PropTypes.arrayOf(PropTypes.any),
+  myBooks: PropTypes.arrayOf(PropTypes.any),
   changeBooksShelf: PropTypes.func.isRequired,
 }
 
