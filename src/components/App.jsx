@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import BookList from './Pages/BookList';
 import BookSearch from './Pages/BookSearch';
+import Loading from './common/Loading';
 
 import "./App.css";
 
@@ -12,15 +13,18 @@ import "./App.css";
 //state e props
 function App() {
   const [myBooks, setMyBooks] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
  
 useEffect(() => {
   fetchBookList();
 }, []);
 
 const fetchBookList = () => {
+   setIsLoading(true);
    BooksAPI.getAll()
     .then((books) => {
       setMyBooks(books);
+      setIsLoading(false);
     });
 };
     
@@ -33,6 +37,9 @@ const changeBookShelf = (book, shelf) => {
 return (
   <BrowserRouter>
     <div className="app">
+      {
+        isLoading && <Loading />
+      }
       <div>
         <Routes>
           <Route exact path="/" element={<BookList myBooks={myBooks} changeBookShelf={changeBookShelf} />}/>
