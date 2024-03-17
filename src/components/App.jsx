@@ -36,7 +36,7 @@ return (
       <div>
         <Routes>
           <Route exact path="/" element={<BookList myBooks={myBooks} changeBookShelf={changeBookShelf} />}/>
-          <Route path='/search' render={() => <BookSearch myBooks={myBooks} changeBooksShelf={changeBookShelf} />} />
+          <Route path='/search' element={<BookSearch myBooks={myBooks} changeBookShelf={changeBookShelf} />} />
         </Routes>
       </div>
     </div>
