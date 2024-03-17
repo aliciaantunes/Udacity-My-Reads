@@ -9,7 +9,6 @@ import Loading from './common/Loading';
 
 import "./App.css";
 
-
 //state e props
 function App() {
   const [myBooks, setMyBooks] = useState([]);
@@ -20,8 +19,8 @@ useEffect(() => {
 }, []);
 
 const fetchBookList = () => {
-   setIsLoading(true);
-   BooksAPI.getAll()
+  setIsLoading(true);
+  BooksAPI.getAll()
     .then((books) => {
       setMyBooks(books);
       setIsLoading(false);
@@ -48,11 +47,7 @@ return (
       </div>
     </div>
   </BrowserRouter>
-  
-)
-
-
-  
+  );
 }
 
 export default App;
