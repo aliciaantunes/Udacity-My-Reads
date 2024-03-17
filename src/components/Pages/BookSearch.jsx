@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { debounce } from 'throttle-debounce';
+import { Link } from 'react-router-dom';
 import * as BooksAPI from '../../BooksAPI';
 import Book from '../common/Book'
 import PropTypes from 'prop-types';
@@ -57,6 +58,9 @@ function BookSearch({myBooks, changeBooksShelf}) {
    return (
     <div className='search-books'>
       <div className='search-books-bar'>
+        <Link className='close-search' to="/">
+          Close
+        </Link>
         <div className='search-books-input-wrapper'>
           <input 
             type='text' 
