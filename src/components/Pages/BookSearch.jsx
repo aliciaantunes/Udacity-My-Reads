@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { debounce } from 'throttle-debounce';
-import * as BooksAPI from '../../utils/BooksAPI';
+import * as BooksAPI from '../../BooksAPI';
 import Book from '../common/Book'
 import PropTypes from 'prop-types';
 
