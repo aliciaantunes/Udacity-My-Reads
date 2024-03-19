@@ -11,18 +11,18 @@ function BookSearch({myBooks, changeBookShelf}) {
     const [searchParameter, setSearchParameter] = useState('');
 
     const searchBooks = debounce(400, (search) => {
-       if (search.length > 0) {
+      if (search.length > 0) {
         BooksAPI.search(search, 10)
-           .then((response) => {
-             if (response.length > 0) {
-                  setBooks(response);
-             } else {
+          .then((response) => {
+            if (response.length > 0) {
+              setBooks(response);
+            } else {
               setBooks([]);
-             }
-           });
-       } else {
-            setBooks([]);
-       }
+            }
+          });
+      } else {
+        setBooks([]); // Clear the search results when the search input is empty
+      }
     });
 
     const onSearchInputChange = (e) => {
@@ -33,6 +33,7 @@ function BookSearch({myBooks, changeBookShelf}) {
 
     useEffect(() => {
       return () => {
+        setBooks([]); 
       };
     }, []);
 
