@@ -10,9 +10,9 @@ function BookSearch({myBooks, changeBookShelf}) {
     const [books, setBooks] = useState([]);
     const [searchParameter, setSearchParameter] = useState('');
 
-    const searchBooks = debounce(400, (searchParameter) => {
-       if (searchParameter.length > 0) {
-        BooksAPI.search(searchParameter, 10)
+    const searchBooks = debounce(400, (search) => {
+       if (search.length > 0) {
+        BooksAPI.search(search, 10)
            .then((response) => {
              if (response.length > 0) {
                   setBooks(response);
@@ -26,9 +26,9 @@ function BookSearch({myBooks, changeBookShelf}) {
     });
 
     const onSearchInputChange = (e) => {
-      const searchParameter = e.target.value;
-      setSearchParameter(searchParameter);
-      searchBooks(searchParameter);
+      const searchParam = e.target.value;
+      setSearchParameter(searchParam);
+      searchBooks(searchParam);
     };
 
     useEffect(() => {
@@ -81,7 +81,7 @@ function BookSearch({myBooks, changeBookShelf}) {
 
 BookSearch.propTypes = {
   myBooks: PropTypes.arrayOf(PropTypes.any),
-  changeBooksShelf: PropTypes.func.isRequired,
+  changeBookShelf: PropTypes.func.isRequired,
 }
 
 BookSearch.defaultProps = {
