@@ -2,7 +2,7 @@
 
 A react bookshelf demonstration - assessment project for Udacity.
 
-It´s possible to see a demo of the project clicking [here](coloque o link aqui).
+It´s possible to see a demo of the project clicking [here](https://alicia-my-reads.surge.sh/).
 
 The MyReads project is a web application that allows users to select and categorize books they have already read, are currently reading, or want to read. Some new features were added beyond specification:
 
