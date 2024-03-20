@@ -51,7 +51,8 @@ function BookSearch({myBooks, changeBookShelf}) {
           <Book 
           key={book.id} 
           book={book} 
-          onChangeShelf={changeBookShelf} />
+          onChangeShelf={changeBookShelf}
+           />
         );
       });
     }
